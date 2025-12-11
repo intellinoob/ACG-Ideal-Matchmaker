@@ -1,0 +1,7 @@
+google-genai
+streamlit
+numpy
+scikit-learn
+pandas
+plotly
+ollama
