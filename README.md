@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ACG Ideal Matchmaker
 
 ## Overview
@@ -126,4 +127,5 @@ MIT License. See [LICENSE](LICENSE) for details. Data from Moegirl Wiki used und
 
 ---
 
-*Project developed by LAM IOK HOI (DC326834), University of Macau, December 2025.*
+*Project developed by LAM IOK HOI (DC326834), University of Macau, December 2025*
+=======
