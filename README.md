@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+
 # ACG Ideal Matchmaker
 
 ## Overview
@@ -6,6 +7,7 @@
 The ACG Ideal Matchmaker is a semantic recommendation system designed to match users with ideal fictional characters from Anime, Comics, and Games (ACG) culture. Leveraging large language models (LLMs) for trait extraction, vector embeddings for similarity computation, and generative AI for personalized reports, this application provides nuanced, explainable matches based on user-described preferences (e.g., "Moe" attributes like *tsundere* or *yandere*).
 
 The system features:
+
 - An offline ETL pipeline to crawl and vectorize character data from Moegirl Wiki.
 - A retrieval-augmented generation (RAG) engine using BGE-M3 embeddings and Google Gemini.
 - An interactive Streamlit interface for query submission and result visualization.
@@ -15,6 +17,7 @@ This README provides instructions for setup, preprocessing, and usage. The proje
 ## Prerequisites
 
 Before proceeding, ensure the following are installed:
+
 - **Python 3.10+**: Download from [python.org](https://www.python.org/downloads/).
 - **Ollama**: For local embedding generation. Install from [ollama.com](https://ollama.com/download) and pull the BGE-M3 model via `ollama pull bge-m3`.
 - **Google Gemini API Key**: Obtain a free key from [Google AI Studio](https://aistudio.google.com/app/apikey). Set it as an environment variable: `export GEMINI_API_KEY="your-api-key-here"`.
@@ -24,12 +27,14 @@ Before proceeding, ensure the following are installed:
 ## Installation
 
 1. **Clone or Download the Repository**:
+
    ```
    git clone <your-repo-url>  # Or download the ZIP
    cd acg-ideal-matchmaker
    ```
 
 2. **Create a Virtual Environment**:
+
    ```
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -37,6 +42,7 @@ Before proceeding, ensure the following are installed:
 
 3. **Install Dependencies**:
    Create a `requirements.txt` file with the following content (if not provided):
+
    ```
    streamlit>=1.28.0
    selenium>=4.0.0
@@ -48,7 +54,9 @@ Before proceeding, ensure the following are installed:
    pandas>=2.0.0
    plotly>=5.15.0
    ```
+
    Then install:
+
    ```
    pip install -r requirements.txt
    ```
@@ -58,19 +66,25 @@ Before proceeding, ensure the following are installed:
 The application requires an initial offline preprocessing step to build the character dataset and embeddings. This must be run once (or after updating the dataset).
 
 ### Step 1: Crawl Character Data
+
 Run the crawler to extract "Moe Points" from Moegirl Wiki:
+
 ```
 python crawl.py
 ```
+
 - **Expected Output**: A JSON file `character_database.json` with ~50 characters (e.g., {"name": "江戶川柯南", "moe_traits": ["正太", "偵探"], "trait_count": 3}).
 - **Duration**: 15–20 minutes (includes rate limiting).
 - **Notes**: Ensure ChromeDriver is installed via webdriver-manager. If issues arise (e.g., timeouts), check network connectivity or reduce the `CHARACTER_LIST` in `crawl.py`.
 
 ### Step 2: Generate Embeddings
+
 Vectorize the dataset using Ollama:
+
 ```
 python generate_embeddings.py
 ```
+
 - **Expected Output**: Files `character_embeddings_ollama.npy` (vectors) and `character_data_with_id.json` (metadata).
 - **Duration**: <5 minutes for 50 characters.
 - **Notes**: Verify Ollama is running (`ollama serve`). The script uses single-prompt embedding to avoid batch errors.
@@ -78,13 +92,17 @@ python generate_embeddings.py
 ## Usage
 
 ### Running the Application
+
 1. **Start the Streamlit Server**:
+
    ```
    streamlit run app.py
    ```
+
    - The app opens in your default browser at `http://localhost:8501`.
 
 2. **Interact with the Interface**:
+
    - **Sidebar Input**: Enter a free-form description of your ideal character (e.g., "A child-like detective with a strong sense of justice and sharp intellect").
    - **Submit Query**: Click "🚀 開始匹配！ (尋找你的 TA)".
    - **View Results**:
@@ -94,6 +112,7 @@ python generate_embeddings.py
      - **Extracted Traits**: List of 8–12 core "Moe points" derived from your query.
 
 3. **Example Queries**:
+
    - Case 1 (Intellectual Detective): "A clever kid who looks innocent but solves mysteries like a pro."
    - Case 2 (Compassionate Hard Worker): "A dedicated big sister type who's kind, strong, and always there to help."
 
@@ -101,7 +120,9 @@ python generate_embeddings.py
 - **Customization**: Adjust `TOP_K` in `pipeline.py` for more/fewer results.
 
 ### Sample Output Structure
+
 For a query, expect:
+
 - Top Match: 江戶川柯南 (100%) – Traits: 正太, 正義感, 偵探.
 - Visualization: Horizontal bar chart with hover details.
 - Report: "Your ideal detective vibe perfectly aligns with Edogawa Conan's child-like genius..."
@@ -127,5 +148,9 @@ MIT License. See [LICENSE](LICENSE) for details. Data from Moegirl Wiki used und
 
 ---
 
-*Project developed by LAM IOK HOI (DC326834), University of Macau, December 2025*
+*Project developed by LAM IOK HOI (DC326834), University of Macau, December 2025.*
 =======
+
+# ACG-Ideal-Matchmaker
+
+>>>>>>> dec1ae72f178599592779b68ab585b6ef01b2215
